@@ -4,12 +4,12 @@
 #include "prefix.h"
 
 void main(){
-	/*char infix[]="1+2*3^4/5+6";
+	/*char infix[]="4+3*(6*3-12)";
     char postfix[80];
     InfixToPostfix(infix, postfix);
     printf("\n %s", postfix);
     getch();*/
-	char expr[]="354*+2$";
+	char expr[]="14+3-";
     double x;
     x=EvaluatePostfix(expr);
     printf("\n %f", x);
