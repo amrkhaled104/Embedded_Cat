@@ -9,7 +9,7 @@ void main(){
     InfixToPostfix(infix, postfix);
     printf("\n %s", postfix);
     getch();*/
-	char expr[]="14+3-";
+	char expr[]="354*+2$";
     double x;
     x=EvaluatePostfix(expr);
     printf("\n %f", x);
