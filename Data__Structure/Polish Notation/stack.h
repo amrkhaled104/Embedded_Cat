@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-//#define INFIX_TO_POSTFIX
+/*#define INFIX_TO_POSTFIX
 #define EVALUATE_POSTFIX
 
 #ifdef INFIX_TO_POSTFIX
@@ -10,12 +10,18 @@ typedef char StackEntry;
 
 #ifdef EVALUATE_POSTFIX
 typedef double StackEntry;
-#endif
+#endif*/
+typedef struct Data {
+	short int etype;
+	union {
+		double digit;
+		char oprato;
+	}info;
+    
+}DATA;
+typedef DATA StackEntry;
 
-struct Data {
-    char Name[50];
-    int age;
-};
+
 typedef struct StackNode  {
     StackEntry Entry;
     struct StackNode *Next;
