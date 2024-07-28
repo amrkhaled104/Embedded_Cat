@@ -3,7 +3,7 @@
 
 #define LIMITED_MEMORY_2
 
-typedef int StackEntry;
+typedef char StackEntry;
 #define MaxStack 100
 
 #ifdef LIMITED_MEMORY_2
