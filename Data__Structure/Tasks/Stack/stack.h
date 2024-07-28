@@ -1,20 +1,10 @@
-/**
- ******************************************************************************
- * @file           : stack.h 
- * @author         : Amr Khaled
- * @brief          : stack.h that consists of the prototypes of the functions 
- *                   with the definition of the stack element type StackEntry
- * @date           : 22/6/2024
- ******************************************************************************
-**/
-
-
-
 #ifndef STACK_H
 #define STACK_H
 
-#include "global.h"
 #define LIMITED_MEMORY_2
+
+typedef int StackEntry;
+#define MaxStack 100
 
 #ifdef LIMITED_MEMORY_2
 
@@ -29,7 +19,6 @@ typedef struct {
 } Stack;
 
 #else
-
 typedef struct {
     int Top;
     StackEntry entries[MaxStack];
@@ -37,6 +26,8 @@ typedef struct {
 
 #endif 
 
+int FindMin(Stack *ps);
+void FisrtElement(StackEntry *pe,Stack *ps);
 void CreateStack(Stack *ps);
 void Push(StackEntry e, Stack *ps);
 void Pop(StackEntry *pe, Stack *ps);
