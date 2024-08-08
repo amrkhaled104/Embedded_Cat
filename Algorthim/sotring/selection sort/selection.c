@@ -1,13 +1,4 @@
-// selection.h - Header file containing the declaration of the selection_sort function
-#ifndef Selection_sort
-#define Selection_sort
-
-// Function prototype for the selection sort algorithm
-void selection_sort(int arr[], int size);
-
-#endif 
-#include "selection.h"
-
+#include "selection_sort"
 void selection_sort(int arr[], int size) {
     // Loop through each element in the array
     for (int i = 0; i < size - 1; i++) {
