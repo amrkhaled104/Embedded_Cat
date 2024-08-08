@@ -1,6 +1,3 @@
-Here's the `README.md` file in English:
-
-```markdown
 # Tic-Tac-Toe Game
 
 ## Introduction
@@ -33,7 +30,7 @@ Tic-Tac-Toe (also known as "X and O") is a classic two-player game where players
 - If the board fills up and no player has won, the game ends in a draw.
 
 ## Game Example
-```
+
 Welcome to Tic-Tac-Toe!
 ========================
 
@@ -50,10 +47,10 @@ Let's Start the Game!
 
 It's Ahmed's turn (X)
 Choose a number (1-9): 5
-```
+
 
 ## Notes
 - This game is played in the command line (CMD/terminal).
 - Make sure to follow the instructions carefully during the game to avoid any errors.
-```
+
 
