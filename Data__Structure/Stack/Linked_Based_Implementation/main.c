@@ -1,4 +1,3 @@
-/**
  **********************************************************************************
  * @file           : main.c >> Linked-Based Implementation
  * @author         : Amr Khaled

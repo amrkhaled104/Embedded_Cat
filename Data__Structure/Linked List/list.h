@@ -37,7 +37,7 @@ void DestroyList(List *);
 int InsertList(int, ListEntry, List *);
 
 // Deletes an entry at the given position
-void DeleteList(int, ListEntry *, List *);
+int DeleteList(int, ListEntry *, List *);
 
 // Traverses the list and applies the Visit function to each entry
 void TraverseList(List *, void (*Visit)(ListEntry));
@@ -47,5 +47,17 @@ void RetrieveList(int, ListEntry *, List *);
 
 // Replaces the entry at the given position with a new entry
 void ReplaceList(int, ListEntry, List *);
+
+// Reverses the nodes in a single linked list
+void ReverseList(List *);
+
+// Retrieves the middle node of the list
+void MiddleNode(ListEntry *, List *);
+
+// Retrieves the maximum age in the list
+int MaxList(List *);
+
+// Retrieves the sum of all ages in the list
+int SumList(List *);
 
 #endif

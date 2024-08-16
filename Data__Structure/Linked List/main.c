@@ -1,63 +1,163 @@
-#include <stdio.h>
 #include "list.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
 
-// Function to print a ListEntry
-void PrintEntry(ListEntry entry) {
-    printf("Name: %s, Age: %d\n", entry.Name, entry.age);
+// Display function to print an element
+void Display(ListEntry e) {
+    printf("Name: %s\nAge: %d\n", e.Name, e.age);
 }
 
 int main() {
-    // Create a list
     List myList;
     CreateList(&myList);
+    ListEntry e;
 
-    // Create some entries
-    ListEntry e1 = {"Alice", 30};
-    ListEntry e2 = {"Bob", 25};
-    ListEntry e3 = {"Charlie", 40};
+    int choice, pos;
 
-    // Insert entries into the list
-    InsertList(0, e1, &myList); // Insert at the beginning
-    InsertList(1, e2, &myList); // Insert at the second position
-    InsertList(2, e3, &myList); // Insert at the third position
+    do {
+        printf("\n-----------------------------------------------\n");
+        printf("1. Clear the list.\n");
+        printf("2. Insert an element.\n");
+        printf("3. Delete an element.\n");
+        printf("4. What is the list size?\n");
+        printf("5. Retrieve an element.\n");
+        printf("6. Replace an element.\n");
+        printf("7. Print all elements in the list.\n");
+        printf("8. Reverse the list.\n");
+        printf("9. Get the middle node.\n");
+        printf("10. Get the sum of all ages.\n");
+        printf("11. Get the maximum age.\n");
+        printf("12. Exit.\n");
+        printf("-----------------------------------------------\n");
 
-    // Print the list size
-    printf("List size after insertions: %d\n", ListSize(&myList));
+        printf("Enter Your Order: ");
+        scanf("%d", &choice);
 
-    // Traverse the list and print each entry
-    printf("List contents:\n");
-    TraverseList(&myList, PrintEntry);
+        switch (choice) {
+            case 1:
+                DestroyList(&myList);
+                printf("List cleared.\n");
+                break;
 
-    // Retrieve an entry from the list
-    ListEntry retrievedEntry;
-    RetrieveList(1, &retrievedEntry, &myList);
-    printf("Retrieved entry at position 1: Name: %s, Age: %d\n", retrievedEntry.Name, retrievedEntry.age);
+            case 2:
+                if (!ListFull(&myList)) {
+                    printf("Enter the position to insert: ");
+                    scanf("%d", &pos);
+                    printf("Enter the Name: ");
+                    scanf("%s", e.Name);
+                    printf("Enter the Age: ");
+                    scanf("%d", &e.age);
+                    if (InsertList(pos, e, &myList)) {
+                        printf("Element inserted.\n");
+                    } else {
+                        printf("This position doesn't exist.\n");
+                    }
+                } else {
+                    printf("The list is full!\n");
+                }
+                break;
 
-    // Replace an entry in the list
-    ListEntry newEntry = {"David", 35};
-    ReplaceList(1, newEntry, &myList);
+            case 3:
+                if (!ListEmpty(&myList)) {
+                    printf("Enter the position to delete: ");
+                    scanf("%d", &pos);
+                    if (DeleteList(pos, &e, &myList)) {
+                        printf("Deleted element: Name: %s, Age: %d\n", e.Name, e.age);
+                    } else {
+                        printf("Failed to delete element.\n");
+                    }
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
 
-    // Traverse the list again to see the changes
-    printf("List contents after replacement:\n");
-    TraverseList(&myList, PrintEntry);
+            case 4:
+                printf("List Size = %d\n", ListSize(&myList));
+                break;
 
-    // Delete an entry from the list
-    ListEntry deletedEntry;
-    DeleteList(1, &deletedEntry, &myList);
-    printf("Deleted entry: Name: %s, Age: %d\n", deletedEntry.Name, deletedEntry.age);
+            case 5:
+                if (!ListEmpty(&myList)) {
+                    printf("Enter the position to retrieve: ");
+                    scanf("%d", &pos);
+                    RetrieveList(pos, &e, &myList);
+                    printf("Retrieved element: Name: %s, Age: %d\n", e.Name, e.age);
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
 
-    // Print the list size after deletion
-    printf("List size after deletion: %d\n", ListSize(&myList));
+            case 6:
+                if (!ListEmpty(&myList)) {
+                    printf("Enter the position to replace: ");
+                    scanf("%d", &pos);
+                    printf("Enter the new Name: ");
+                    scanf("%s", e.Name);
+                    printf("Enter the new Age: ");
+                    scanf("%d", &e.age);
+                    ReplaceList(pos, e, &myList);
+                    printf("Element replaced.\n");
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
 
-    // Traverse the list again to see the changes
-    printf("List contents after deletion:\n");
-    TraverseList(&myList, PrintEntry);
+            case 7:
+                if (!ListEmpty(&myList)) {
+                    TraverseList(&myList, &Display);
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
 
-    // Destroy the list
-    DestroyList(&myList);
+            case 8:
+                if (!ListEmpty(&myList)) {
+                    ReverseList(&myList);
+                    printf("List reversed.\n");
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
 
-    // Print the list size after destruction
-    printf("List size after destruction: %d\n", ListSize(&myList));
+            case 9:
+                if (!ListEmpty(&myList)) {
+                    MiddleNode(&e, &myList);
+                    printf("Middle node: Name: %s, Age: %d\n", e.Name, e.age);
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
+
+            case 10:
+                if (!ListEmpty(&myList)) {
+                    int sum = SumList(&myList);
+                    printf("Sum of all ages: %d\n", sum);
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
+
+            case 11:
+                if (!ListEmpty(&myList)) {
+                    int max = MaxList(&myList);
+                    printf("Maximum age: %d\n", max);
+                } else {
+                    printf("The list is empty!\n");
+                }
+                break;
+
+            case 12:
+                DestroyList(&myList);
+                exit(0);
+                break;
+
+            default:
+                printf("Invalid choice, please try again.\n");
+                break;
+        }
+
+        printf("\nEnter y to continue.... \n");
+    } while (getch() == 'y');
 
     return 0;
 }
